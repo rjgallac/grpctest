@@ -17,17 +17,10 @@ public class HelloService extends HelloWorldServiceGrpc.HelloWorldServiceImplBas
             LoggerFactory.getLogger(HelloService.class);
 
     @Override
-    public void sayHello(Person request,
-                         StreamObserver<Greeting> responseObserver) {
+    public void sayHello(Person request, StreamObserver<Greeting> responseObserver) {LOGGER.info("server received {}", request);
 
-
-
-        LOGGER.info("server received {}", request);
-
-        String message = "Hello " + request.getFirstName() + " "
-                + request.getLastName() + "!";
-        Greeting greeting =
-                Greeting.newBuilder().setMessage(message).build();
+        String message = "Hello " + request.getFirstName() + " " + request.getLastName() + "!";
+        Greeting greeting = Greeting.newBuilder().setMessage(message).build();
         LOGGER.info("server responded {}", greeting);
 
         responseObserver.onNext(greeting);
