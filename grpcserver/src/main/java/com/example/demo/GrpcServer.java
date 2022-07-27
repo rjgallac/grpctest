@@ -11,17 +11,16 @@ public class GrpcServer {
 		Server server = ServerBuilder
 				.forPort(8080)
 				.addService(new HelloService()).build();
-
 		try {
 			server.start();
-		} catch (IOException e) {
-//			e.printStackTrace();
-		}
-		try {
 			server.awaitTermination();
-		} catch (InterruptedException e) {
-//			e.printStackTrace();
+		}catch(Exception e){
+//			System.out.println(e);
+			System.out.println("ERROR");
 		}
+
+
+
 	}
 
 }
